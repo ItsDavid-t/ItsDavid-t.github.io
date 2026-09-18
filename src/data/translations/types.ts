@@ -53,6 +53,7 @@ export interface Translation {
     eyebrow: string;
     title: string;
     description: string;
+    tagline: string;
   };
   github: {
     title: string;

@@ -4,7 +4,7 @@ export const es: Translation = {
   meta: {
     title: 'David Alvarez — Desarrollador de Software',
     description:
-      'Desarrollador de software enfocado en Flutter y Dart. Construyendo productos de software reales, incluyendo Echo Stock y Echo Repair.',
+      'Desarrollador de software enfocado en Flutter y Dart. Construyendo productos de software reales, incluyendo Echo Stock y Echo Fix.',
     ogTitle: 'David Alvarez — Desarrollador de Software',
     ogDescription:
       'Construyendo productos de software con Flutter, Dart y tecnologías modernas. Explora el ecosistema de productos Echo.',
@@ -68,8 +68,8 @@ export const es: Translation = {
         description:
           'Una aplicación Flutter para que pequeños negocios gestionen inventario, productos, ventas y finanzas. Construida con Supabase, BLoC/Cubit y Clean Architecture para confiabilidad a escala.',
       },
-      'echo-repair': {
-        name: 'Echo Repair',
+      'echo-fix': {
+        name: 'Echo Fix',
         description:
           'Una aplicación Flutter para talleres de reparación que gestiona clientes, dispositivos, reparaciones, presupuestos, repuestos, pagos, fotos y estadísticas — con historial completo de reparaciones y control de inventario.',
       },
@@ -79,7 +79,8 @@ export const es: Translation = {
     eyebrow: 'Ecosistema de productos',
     title: 'La colección Echo',
     description:
-      'Echo Stock y Echo Repair forman parte de una colección creciente de productos de software orientados a negocios. Cada app aborda una necesidad operativa específica mientras comparte un enfoque consistente en arquitectura, UX y mantenibilidad a largo plazo.',
+      'Echo Stock y Echo Fix forman parte de una colección creciente de productos de software orientados a negocios. Cada app aborda una necesidad operativa específica mientras comparte un enfoque consistente en arquitectura, UX y mantenibilidad a largo plazo.',
+    tagline: 'Lo que creas deja huella y sigue resonando',
   },
   github: {
     title: 'Explora mi GitHub',

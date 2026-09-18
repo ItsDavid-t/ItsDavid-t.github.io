@@ -13,10 +13,11 @@ const { t } = Astro.props;
     <p class="echo-brand__eyebrow">{t.eyebrow}</p>
     <h3 class="echo-brand__title">{t.title}</h3>
     <p class="echo-brand__description">{t.description}</p>
+    <p class="echo-brand__tagline">{t.tagline}</p>
     <div class="echo-brand__marks" aria-hidden="true">
       <span class="echo-mark">Echo Stock</span>
       <span class="echo-mark echo-mark--divider">·</span>
-      <span class="echo-mark">Echo Repair</span>
+      <span class="echo-mark">Echo Fix</span>
       <span class="echo-mark echo-mark--divider">·</span>
       <span class="echo-mark echo-mark--future">+</span>
     </div>
@@ -71,6 +72,19 @@ const { t } = Astro.props;
     color: var(--color-text-muted);
     line-height: 1.7;
     margin-bottom: var(--space-lg);
+  }
+
+  .echo-brand__tagline {
+    position: relative;
+    max-width: 38rem;
+    margin-inline: auto;
+    font-size: 1.125rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--color-accent);
+    line-height: 1.6;
+    margin-bottom: var(--space-lg);
+    font-style: italic;
   }
 
   .echo-brand__marks {

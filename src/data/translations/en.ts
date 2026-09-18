@@ -4,7 +4,7 @@ export const en: Translation = {
   meta: {
     title: 'David Alvarez — Software Developer',
     description:
-      'Software developer focused on Flutter and Dart. Building real software products including Echo Stock and Echo Repair.',
+      'Software developer focused on Flutter and Dart. Building real software products including Echo Stock and Echo Fix.',
     ogTitle: 'David Alvarez — Software Developer',
     ogDescription:
       'Building software products with Flutter, Dart, and modern technologies. Explore the Echo product ecosystem.',
@@ -67,8 +67,8 @@ export const en: Translation = {
         description:
           'A Flutter application for small businesses to manage inventory, products, sales, and finances. Built with Supabase, BLoC/Cubit, and Clean Architecture for reliability at scale.',
       },
-      'echo-repair': {
-        name: 'Echo Repair',
+      'echo-fix': {
+        name: 'Echo Fix',
         description:
           'A Flutter application for repair shops to manage customers, devices, repairs, budgets, parts, payments, photos, and statistics — with full repair history and inventory tracking.',
       },
@@ -78,7 +78,8 @@ export const en: Translation = {
     eyebrow: 'Product ecosystem',
     title: 'The Echo collection',
     description:
-      'Echo Stock and Echo Repair are part of a growing collection of business-focused software products. Each app targets a specific operational need while sharing a consistent approach to architecture, UX, and long-term maintainability.',
+      'Echo Stock and Echo Fix are part of a growing collection of business-focused software products. Each app targets a specific operational need while sharing a consistent approach to architecture, UX, and long-term maintainability.',
+    tagline: 'What you create leaves a mark and keeps resonating',
   },
   github: {
     title: 'Explore my GitHub',

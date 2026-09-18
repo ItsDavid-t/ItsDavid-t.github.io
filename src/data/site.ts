@@ -8,6 +8,7 @@ export interface ProjectDefinition {
   demo?: string | null;
   featured: boolean;
   image: string;
+  videoUrl?: string | null;
 }
 
 export interface Project extends ProjectDefinition {
@@ -17,6 +18,7 @@ export interface Project extends ProjectDefinition {
   githubUpdatedAt: string | null;
   syncedFromGitHub: boolean;
   autoDiscovered?: boolean;
+  videoUrl?: string | null;
 }
 
 export interface TechGroup {
@@ -63,6 +65,7 @@ export const siteConfig = {
       demo: null,
       featured: true,
       image: '/projects/echo_stock.png',
+      videoUrl: '/echo_stock.mp4',
     },
     {
       id: 'echo-fix',
@@ -93,6 +96,7 @@ export const siteConfig = {
       demo: null,
       featured: true,
       image: '/projects/echo_web.png',
+      videoUrl: '/echo_web.mp4',
     }
   ] satisfies ProjectDefinition[],
 
