@@ -25,7 +25,7 @@ export interface TechGroup {
 }
 
 export const siteConfig = {
-  name: 'David Alvarez',
+  name: 'David Álvarez',
   role: 'Software Developer',
   githubUsername: 'ItsDavid-t',
   siteUrl: 'https://itsdavid-t.github.io',
@@ -35,9 +35,9 @@ export const siteConfig = {
   },
 
   avatar: {
-    /** Put your photo here: place avatar.png in /public/ and replace the file manually */
+   
     src: '/avatar.png',
-    alt: 'David Alvarez',
+    alt: 'David Álvarez',
   },
 
   social: {
@@ -49,7 +49,7 @@ export const siteConfig = {
  
   projects: [
     {
-      id: 'echo-stock',
+      id: 'catalogo_nova_admin',
       githubRepo: 'catalogo_nova_admin',
       status: 'active',
       technologies: [
