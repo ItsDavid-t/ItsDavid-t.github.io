@@ -46,7 +46,7 @@ export const siteConfig = {
     github: 'https://github.com/ItsDavid-t',
     linkedin: 'https://linkedin.com/in/david-álvarez-a09923356',
     email: 'mailto:jobDavid2899@gmail.com',
-    instagram: 'https://instagram.com/its._.david',
+    instagram: 'https://instagram.com/lts._.david',
   },
 
  
