@@ -51,7 +51,7 @@ export const es: Translation = {
   projects: {
     title: 'Proyectos',
     eyebrow: 'Trabajo destacado',
-    syncNote: 'Los proyectos se sincronizan desde GitHub en cada deploy. Publica un repo echo-* o añade el topic echo-product para incluirlo aquí automáticamente.',
+    
     viewGithub: 'Ver en GitHub',
     viewDemo: 'Demo en vivo',
     updated: 'Actualizado',

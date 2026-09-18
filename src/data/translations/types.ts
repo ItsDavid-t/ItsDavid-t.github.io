@@ -40,7 +40,6 @@ export interface Translation {
   projects: {
     title: string;
     eyebrow: string;
-    syncNote: string;
     viewGithub: string;
     viewDemo: string;
     updated: string;
