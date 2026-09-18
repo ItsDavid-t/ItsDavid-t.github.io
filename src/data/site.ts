@@ -35,15 +35,15 @@ export const siteConfig = {
   },
 
   avatar: {
-    /** Replace with your photo: place avatar.jpg or avatar.png in /public/ */
-    src: '/avatar.svg',
+    /** Put your photo here: place avatar.png in /public/ and replace the file manually */
+    src: '/avatar.png',
     alt: 'David Alvarez',
   },
 
   social: {
     github: 'https://github.com/ItsDavid-t',
-    linkedin: 'https://linkedin.com/in/YOUR_LINKEDIN_USERNAME',
-    email: 'mailto:YOUR_EMAIL@example.com',
+    linkedin: 'https://linkedin.com/in/ItsDavid-t',
+    email: 'mailto:jobDavid2899@gmail.com',
   },
 
   /**

@@ -6,6 +6,7 @@ import EchoBrand from '../components/EchoBrand.astro';
 import TechStack from '../components/TechStack.astro';
 import GitHubSection from '../components/GitHubSection.astro';
 import Contact from '../components/Contact.astro';
+import { getGitHubStats, getProjects } from '../lib/projects';
 import type { Locale, Translation } from '../data/translations/types';
 
 interface Props {
@@ -13,13 +14,15 @@ interface Props {
   t: Translation;
 }
 
-const { t } = Astro.props;
+const { locale, t } = Astro.props;
+const projects = await getProjects();
+const stats = await getGitHubStats();
 ---
 
 <Hero t={t} />
 <About t={t.about} />
-<Projects t={t.projects} />
+<Projects projects={projects} locale={locale} t={t.projects} />
 <EchoBrand t={t.echo} />
 <TechStack t={t.stack} />
-<GitHubSection t={t.github} />
+<GitHubSection t={t.github} stats={stats} />
 <Contact t={t.contact} />
