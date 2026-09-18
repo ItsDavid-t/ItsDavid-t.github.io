@@ -98,6 +98,7 @@ export const en: Translation = {
     description:
       'Whether you want to discuss a Flutter application, collaborate on a product idea, or simply connect — feel free to reach out.',
     cta: 'Get in touch',
+    orConnect: 'Or connect on social media',
   },
   footer: {
     role: 'Software Developer',

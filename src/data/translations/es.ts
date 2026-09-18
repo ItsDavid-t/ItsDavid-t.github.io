@@ -99,6 +99,7 @@ export const es: Translation = {
     description:
       'Ya sea que quieras discutir una aplicación Flutter, colaborar en una idea de producto o simplemente conectar — no dudes en escribirme.',
     cta: 'Contactar',
+    orConnect: 'O conecta en redes sociales',
   },
   footer: {
     role: 'Desarrollador de Software',

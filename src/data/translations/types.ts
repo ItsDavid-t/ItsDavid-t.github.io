@@ -70,6 +70,7 @@ export interface Translation {
     title: string;
     description: string;
     cta: string;
+    orConnect: string;
   };
   footer: {
     role: string;

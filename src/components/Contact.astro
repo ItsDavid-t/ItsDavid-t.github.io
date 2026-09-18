@@ -15,9 +15,23 @@ const { t } = Astro.props;
   <div class="contact reveal">
     <h2 class="contact__title">{t.title}</h2>
     <p class="contact__description">{t.description}</p>
-    <Button href={siteConfig.social.email} variant="primary" size="lg">
-      {t.cta}
-    </Button>
+    <div class="contact__actions">
+      <Button href={siteConfig.social.email} variant="primary" size="lg">
+        {t.cta}
+      </Button>
+      <p class="contact__social-label">{t.orConnect}</p>
+      <div class="contact__social">
+        <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          GitHub
+        </a>
+        <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          LinkedIn
+        </a>
+        <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          Instagram
+        </a>
+      </div>
+    </div>
   </div>
 </Section>
 
@@ -43,5 +57,41 @@ const { t } = Astro.props;
     color: var(--color-text-muted);
     line-height: 1.7;
     margin-bottom: var(--space-xl);
+  }
+
+  .contact__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+
+  .contact__social-label {
+    font-size: 0.875rem;
+    color: var(--color-text-subtle);
+    margin-top: var(--space-sm);
+  }
+
+  .contact__social {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-md);
+  }
+
+  .contact__social a {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    color: var(--color-accent);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-normal);
+    text-decoration: none;
+  }
+
+  .contact__social a:hover {
+    color: var(--color-text);
+    background: var(--color-accent-muted);
+    border-color: var(--color-accent);
   }
 </style>
