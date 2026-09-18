@@ -1,0 +1,53 @@
+---
+import type { Locale, Translation } from '../data/translations/types';
+
+interface Props {
+  locale: Locale;
+  t: Translation['language'];
+}
+
+const { locale, t } = Astro.props;
+
+const otherLocale = locale === 'en' ? 'es' : 'en';
+const otherPath = otherLocale === 'en' ? '/' : '/es/';
+const otherLabel = otherLocale === 'en' ? t.en : t.es;
+---
+
+<a
+  href={otherPath}
+  class="lang-toggle"
+  aria-label={`${t.switchTo}: ${otherLabel}`}
+  hreflang={otherLocale}
+  lang={otherLocale}
+>
+  <span class="lang-code">{otherLocale.toUpperCase()}</span>
+</a>
+
+<style>
+  .lang-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.375rem;
+    height: 2.375rem;
+    padding-inline: 0.625rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--color-text-muted);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition:
+      color var(--transition-fast),
+      border-color var(--transition-fast),
+      background var(--transition-fast);
+  }
+
+  .lang-toggle:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    background: var(--color-accent-muted);
+  }
+</style>

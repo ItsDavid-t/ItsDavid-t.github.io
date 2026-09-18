@@ -1,0 +1,47 @@
+---
+import Section from './Section.astro';
+import Button from './Button.astro';
+import { siteConfig } from '../data/site';
+import type { Translation } from '../data/translations/types';
+
+interface Props {
+  t: Translation['contact'];
+}
+
+const { t } = Astro.props;
+---
+
+<Section id="contact" class="contact-section">
+  <div class="contact reveal">
+    <h2 class="contact__title">{t.title}</h2>
+    <p class="contact__description">{t.description}</p>
+    <Button href={siteConfig.social.email} variant="primary" size="lg">
+      {t.cta}
+    </Button>
+  </div>
+</Section>
+
+<style>
+  .contact {
+    text-align: center;
+    padding: var(--space-3xl) var(--space-xl);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+  }
+
+  .contact__title {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--space-md);
+  }
+
+  .contact__description {
+    max-width: 32rem;
+    margin-inline: auto;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: var(--space-xl);
+  }
+</style>

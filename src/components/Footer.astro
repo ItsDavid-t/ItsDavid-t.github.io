@@ -1,0 +1,108 @@
+---
+import { siteConfig } from '../data/site';
+import type { Translation } from '../data/translations/types';
+
+interface Props {
+  t: Translation['footer'];
+}
+
+const { t } = Astro.props;
+const year = new Date().getFullYear();
+
+const links = [
+  { label: 'GitHub', href: siteConfig.social.github },
+  { label: 'LinkedIn', href: siteConfig.social.linkedin },
+  { label: 'Email', href: siteConfig.social.email },
+];
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <p class="footer__name">{siteConfig.name}</p>
+      <p class="footer__role">{t.role}</p>
+    </div>
+
+    <nav class="footer__nav" aria-label="Footer navigation">
+      <ul class="footer__links">
+        {
+          links.map((link) => (
+            <li>
+              <a href={link.href} target={link.href.startsWith('mailto:') ? undefined : '_blank'} rel={link.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}>
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <p class="footer__copy">
+      &copy; {year} {siteConfig.name}. {t.copyright}
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding-block: var(--space-2xl);
+    border-top: 1px solid var(--color-border);
+    background: var(--color-bg-elevated);
+  }
+
+  .footer__inner {
+    display: grid;
+    gap: var(--space-lg);
+    text-align: center;
+  }
+
+  .footer__name {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .footer__role {
+    font-size: 0.875rem;
+    color: var(--color-text-subtle);
+    margin-top: 0.25rem;
+  }
+
+  .footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-md) var(--space-xl);
+  }
+
+  .footer__links a {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    transition: color var(--transition-fast);
+  }
+
+  .footer__links a:hover {
+    color: var(--color-accent);
+  }
+
+  .footer__copy {
+    font-size: 0.8125rem;
+    color: var(--color-text-subtle);
+  }
+
+  @media (min-width: 768px) {
+    .footer__inner {
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      text-align: left;
+    }
+
+    .footer__nav {
+      justify-self: center;
+    }
+
+    .footer__copy {
+      justify-self: end;
+      text-align: right;
+    }
+  }
+</style>

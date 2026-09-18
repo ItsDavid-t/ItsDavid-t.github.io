@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Home from '../../views/Home.astro';
+import { es } from '../../data/translations/es';
+---
+
+<BaseLayout locale="es" t={es} canonicalPath="/es/">
+  <Home locale="es" t={es} />
+</BaseLayout>

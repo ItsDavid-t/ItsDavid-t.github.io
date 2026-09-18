@@ -1,0 +1,36 @@
+---
+import Section from './Section.astro';
+import ProjectCard from './ProjectCard.astro';
+import { siteConfig } from '../data/site';
+import type { Translation } from '../data/translations/types';
+
+interface Props {
+  t: Translation['projects'];
+}
+
+const { t } = Astro.props;
+const featuredProjects = siteConfig.projects.filter((p) => p.featured);
+---
+
+<Section id="projects" eyebrow={t.eyebrow} title={t.title}>
+  <div class="projects-grid">
+    {featuredProjects.map((project) => (
+      <ProjectCard project={project} t={t} />
+    ))}
+  </div>
+</Section>
+
+<style>
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  @media (min-width: 768px) {
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-2xl);
+    }
+  }
+</style>

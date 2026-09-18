@@ -1,0 +1,85 @@
+---
+import Section from './Section.astro';
+import Button from './Button.astro';
+import { siteConfig } from '../data/site';
+import type { Translation } from '../data/translations/types';
+
+interface Props {
+  t: Translation['github'];
+}
+
+const { t } = Astro.props;
+---
+
+<Section id="github" eyebrow={t.eyebrow} title={t.title} class="github-section">
+  <div class="github reveal">
+    <p class="github__description">{t.description}</p>
+
+    <div class="github__stats">
+      <div class="github-stat">
+        <span class="github-stat__value">@{siteConfig.githubUsername}</span>
+        <span class="github-stat__label">{t.stats.repositories}</span>
+      </div>
+      <div class="github-stat">
+        <span class="github-stat__value">Flutter</span>
+        <span class="github-stat__label">{t.stats.products}</span>
+      </div>
+      <div class="github-stat">
+        <span class="github-stat__value">Echo</span>
+        <span class="github-stat__label">{t.stats.openSource}</span>
+      </div>
+    </div>
+
+    <Button href={siteConfig.social.github} variant="primary" size="lg" external>
+      {t.cta}
+    </Button>
+  </div>
+</Section>
+
+<style>
+  .github {
+    max-width: 40rem;
+  }
+
+  .github__description {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-xl);
+  }
+
+  .github__stats {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+  }
+
+  .github-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: var(--space-lg);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+
+  .github-stat__value {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .github-stat__label {
+    font-size: 0.8125rem;
+    color: var(--color-text-subtle);
+  }
+
+  @media (min-width: 640px) {
+    .github__stats {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

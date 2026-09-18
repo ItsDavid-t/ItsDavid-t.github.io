@@ -1,0 +1,167 @@
+---
+import TechBadge from './TechBadge.astro';
+import Button from './Button.astro';
+import type { Project } from '../data/site';
+import type { Translation } from '../data/translations/types';
+
+interface Props {
+  project: Project;
+  t: Translation['projects'];
+}
+
+const { project, t } = Astro.props;
+const content = t.items[project.id as keyof typeof t.items];
+const statusLabel = t.status[project.status];
+const isActive = project.status === 'active';
+---
+
+<article class:list={['project-card', 'reveal', { 'project-card--featured': project.featured }]}>
+  <div class="project-card__media">
+    <img
+      src={project.image}
+      alt=""
+      width="640"
+      height="400"
+      loading="lazy"
+      decoding="async"
+    />
+    <span class:list={['project-card__status', `project-card__status--${project.status}`]}>
+      {statusLabel}
+    </span>
+  </div>
+
+  <div class="project-card__body">
+    <h3 class="project-card__title">{content.name}</h3>
+    <p class="project-card__description">{content.description}</p>
+
+    <ul class="project-card__tech" aria-label="Technologies">
+      {project.technologies.map((tech) => (
+        <li>
+          <TechBadge label={tech} />
+        </li>
+      ))}
+    </ul>
+
+    <div class="project-card__actions">
+      <Button href={project.github} variant={isActive ? 'primary' : 'secondary'} external>
+        {t.viewGithub}
+      </Button>
+      {
+        project.demo && (
+          <Button href={project.demo} variant="ghost" external>
+            {t.viewDemo}
+          </Button>
+        )
+      }
+    </div>
+  </div>
+</article>
+
+<style>
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--gradient-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    transition:
+      border-color var(--transition-base),
+      transform var(--transition-base),
+      box-shadow var(--transition-base);
+  }
+
+  .project-card:hover {
+    border-color: var(--color-border-strong);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .project-card--featured {
+    border-color: var(--color-border-strong);
+  }
+
+  .project-card__media {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    background: var(--color-bg-elevated);
+    border-bottom: 1px solid var(--color-border);
+    overflow: hidden;
+  }
+
+  .project-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+  }
+
+  .project-card:hover .project-card__media img {
+    transform: scale(1.02);
+  }
+
+  .project-card__status {
+    position: absolute;
+    top: var(--space-md);
+    left: var(--space-md);
+    padding: 0.375rem 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-radius: var(--radius-sm);
+    backdrop-filter: blur(8px);
+  }
+
+  .project-card__status--active {
+    color: var(--color-success);
+    background: var(--color-success-muted);
+    border: 1px solid rgba(52, 211, 153, 0.2);
+  }
+
+  .project-card__status--in-development {
+    color: var(--color-warning);
+    background: var(--color-warning-muted);
+    border: 1px solid rgba(251, 191, 36, 0.2);
+  }
+
+  .project-card__status--planned {
+    color: var(--color-text-muted);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+  }
+
+  .project-card__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: var(--space-md);
+    padding: var(--space-xl);
+  }
+
+  .project-card__title {
+    font-size: 1.375rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .project-card__description {
+    color: var(--color-text-muted);
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  .project-card__tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .project-card__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    padding-top: var(--space-sm);
+  }
+</style>

@@ -1,0 +1,102 @@
+---
+import type { Translation } from '../data/translations/types';
+
+interface Props {
+  t: Translation['echo'];
+}
+
+const { t } = Astro.props;
+---
+
+<div class="echo-brand reveal">
+  <div class="echo-brand__inner">
+    <p class="echo-brand__eyebrow">{t.eyebrow}</p>
+    <h3 class="echo-brand__title">{t.title}</h3>
+    <p class="echo-brand__description">{t.description}</p>
+    <div class="echo-brand__marks" aria-hidden="true">
+      <span class="echo-mark">Echo Stock</span>
+      <span class="echo-mark echo-mark--divider">·</span>
+      <span class="echo-mark">Echo Repair</span>
+      <span class="echo-mark echo-mark--divider">·</span>
+      <span class="echo-mark echo-mark--future">+</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .echo-brand {
+    margin-top: var(--space-2xl);
+  }
+
+  .echo-brand__inner {
+    padding: var(--space-2xl);
+    text-align: center;
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .echo-brand__inner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, var(--color-accent-muted), transparent 60%);
+    pointer-events: none;
+  }
+
+  .echo-brand__eyebrow {
+    position: relative;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--space-sm);
+  }
+
+  .echo-brand__title {
+    position: relative;
+    font-size: clamp(1.25rem, 3vw, 1.625rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-md);
+  }
+
+  .echo-brand__description {
+    position: relative;
+    max-width: 38rem;
+    margin-inline: auto;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: var(--space-lg);
+  }
+
+  .echo-brand__marks {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--color-text-subtle);
+  }
+
+  .echo-mark--divider {
+    opacity: 0.4;
+  }
+
+  .echo-mark--future {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--color-accent);
+    border: 1px dashed var(--color-border-strong);
+    border-radius: var(--radius-sm);
+  }
+</style>

@@ -1,0 +1,117 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { siteConfig } from '../data/site';
+import type { Locale, Translation } from '../data/translations/types';
+
+interface Props {
+  locale: Locale;
+  t: Translation;
+  canonicalPath?: string;
+}
+
+const { locale, t, canonicalPath = '/' } = Astro.props;
+
+const canonicalUrl = new URL(canonicalPath, siteConfig.siteUrl).href;
+const alternateEn = new URL('/', siteConfig.siteUrl).href;
+const alternateEs = new URL('/es/', siteConfig.siteUrl).href;
+const ogImage = new URL('/og-image.svg', siteConfig.siteUrl).href;
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{t.meta.title}</title>
+    <meta name="description" content={t.meta.description} />
+    <meta name="author" content={siteConfig.name} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <link rel="alternate" hreflang="en" href={alternateEn} />
+    <link rel="alternate" hreflang="es" href={alternateEs} />
+    <link rel="alternate" hreflang="x-default" href={alternateEn} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={t.meta.ogTitle} />
+    <meta property="og:description" content={t.meta.ogDescription} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={locale === 'en' ? 'en_US' : 'es_ES'} />
+    <meta property="og:site_name" content={siteConfig.name} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={t.meta.ogTitle} />
+    <meta name="twitter:description" content={t.meta.ogDescription} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <script is:inline>
+      (function () {
+        const storageKey = 'theme';
+        const stored = localStorage.getItem(storageKey);
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = stored === 'light' || stored === 'dark' ? stored : prefersDark ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+  </head>
+  <body>
+    <Navbar locale={locale} t={t} />
+    <main>
+      <slot />
+    </main>
+    <Footer t={t.footer} />
+
+    <script>
+      function initThemeToggle() {
+        const toggle = document.querySelector('[data-theme-toggle]');
+        if (!toggle) return;
+
+        toggle.addEventListener('click', () => {
+          const root = document.documentElement;
+          const current = root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+          const next = current === 'light' ? 'dark' : 'light';
+          root.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+        });
+      }
+
+      function initReveal() {
+        const elements = document.querySelectorAll('.reveal');
+        if (!elements.length) return;
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+        );
+
+        elements.forEach((el) => observer.observe(el));
+      }
+
+      initThemeToggle();
+      initReveal();
+      document.addEventListener('astro:page-load', () => {
+        initThemeToggle();
+        initReveal();
+      });
+    </script>
+  </body>
+</html>

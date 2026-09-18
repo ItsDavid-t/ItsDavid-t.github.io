@@ -1,0 +1,75 @@
+---
+import Section from './Section.astro';
+import type { Translation } from '../data/translations/types';
+
+interface Props {
+  t: Translation['about'];
+}
+
+const { t } = Astro.props;
+---
+
+<Section id="about" eyebrow={t.eyebrow} title={t.title}>
+  <div class="about reveal">
+    <div class="about__content">
+      {t.paragraphs.map((paragraph) => (
+        <p class="about__paragraph">{paragraph}</p>
+      ))}
+    </div>
+
+    <aside class="about__focus">
+      <span class="about__focus-label">{t.focusLabel}</span>
+      <p class="about__focus-text">{t.focus}</p>
+    </aside>
+  </div>
+</Section>
+
+<style>
+  .about {
+    display: grid;
+    gap: var(--space-2xl);
+  }
+
+  .about__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    max-width: 42rem;
+  }
+
+  .about__paragraph {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: var(--color-text-muted);
+  }
+
+  .about__focus {
+    padding: var(--space-xl);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    border-left: 3px solid var(--color-accent);
+  }
+
+  .about__focus-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--space-sm);
+  }
+
+  .about__focus-text {
+    color: var(--color-text);
+    line-height: 1.65;
+  }
+
+  @media (min-width: 768px) {
+    .about {
+      grid-template-columns: 1.4fr 1fr;
+      align-items: start;
+    }
+  }
+</style>
