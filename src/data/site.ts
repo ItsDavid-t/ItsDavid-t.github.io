@@ -46,11 +46,7 @@ export const siteConfig = {
     email: 'mailto:jobDavid2899@gmail.com',
   },
 
-  /**
-   * GitHub sync — at build time the site fetches your public repos and merges
-   * them with this list. New Echo repos are picked up automatically when they
-   * match repoNamePrefixes or repoTopics (see githubSync below).
-   */
+ 
   projects: [
     {
       id: 'echo-stock',
@@ -66,11 +62,11 @@ export const siteConfig = {
       ],
       demo: null,
       featured: true,
-      image: '/projects/echo-stock.svg',
+      image: '/projects/echo_stock.png',
     },
     {
-      id: 'echo-repair',
-      githubRepo: 'echo-repair',
+      id: 'echo-fix',
+      githubRepo: 'echo-fix',
       status: 'in-development',
       technologies: [
         'Flutter',
@@ -82,19 +78,33 @@ export const siteConfig = {
       ],
       demo: null,
       featured: true,
-      image: '/projects/echo-repair.svg',
-    },
+      image: '/projects/echo_fix.png',
+    },{
+        id: 'echo-stock-admin',
+      githubRepo: 'echo-stock-admin',
+      status: 'active',
+      technologies: [
+        'Next.js',
+        'TypeScript',
+        'Supabase',
+        'Clean Architecture',
+        'SQLite',
+      ],
+      demo: null,
+      featured: true,
+      image: '/projects/echo_web.png',
+    }
   ] satisfies ProjectDefinition[],
 
   githubSync: {
     autoDiscover: true,
-    /** Repos starting with these prefixes appear on the portfolio automatically */
+   
     repoNamePrefixes: ['echo-'],
-    /** Or add the topic "echo-product" on GitHub to include any repo name */
+   
     repoTopics: ['echo', 'echo-product'],
-    /** Repos excluded from auto-discovery */
+   
     excludeRepos: ['ItsDavid-t.github.io'],
-    defaultImage: '/projects/echo-default.svg',
+    defaultImage: '/projects/echo-stock.png',
   },
 
   techGroups: [
