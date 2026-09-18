@@ -1,5 +1,6 @@
 ---
 import Button from './Button.astro';
+import Avatar from './Avatar.astro';
 import { siteConfig } from '../data/site';
 import type { Translation } from '../data/translations/types';
 
@@ -18,16 +19,18 @@ const { t } = Astro.props;
 
   <div class="container hero__content">
     <div class="hero__text">
-      <p class="hero__eyebrow reveal">
-        <span class="hero__dot" aria-hidden="true"></span>
-        {t.hero.role}
-      </p>
+      <div class="hero__identity reveal">
+        <Avatar size="xl" showBrand />
+        <div class="hero__identity-text">
+          <p class="hero__eyebrow">
+            <span class="hero__brand-mark" aria-hidden="true">{siteConfig.brand.mark}</span>
+            {t.hero.role}
+          </p>
+          <h1 class="hero__name">{siteConfig.name}</h1>
+        </div>
+      </div>
 
-      <h1 class="hero__title reveal">
-        <span class="hero__name">{siteConfig.name}</span>
-        <span class="hero__subtitle">{t.hero.headline}</span>
-      </h1>
-
+      <p class="hero__subtitle reveal">{t.hero.headline}</p>
       <p class="hero__supporting reveal">{t.hero.supporting}</p>
 
       <div class="hero__actions reveal">
@@ -44,7 +47,9 @@ const { t } = Astro.props;
           <span class="product-panel__dot product-panel__dot--red"></span>
           <span class="product-panel__dot product-panel__dot--yellow"></span>
           <span class="product-panel__dot product-panel__dot--green"></span>
-          <span class="product-panel__label">echo/products</span>
+          <span class="product-panel__label">
+            {siteConfig.brand.mark} echo/products
+          </span>
         </div>
         <div class="product-panel__body">
           <div class="product-panel__line product-panel__line--accent"></div>
@@ -109,6 +114,17 @@ const { t } = Astro.props;
     align-items: center;
   }
 
+  .hero__identity {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-lg);
+  }
+
+  .hero__identity-text {
+    min-width: 0;
+  }
+
   .hero__eyebrow {
     display: inline-flex;
     align-items: center;
@@ -118,33 +134,19 @@ const { t } = Astro.props;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--color-text-muted);
-    margin-bottom: var(--space-lg);
+    margin-bottom: 0.375rem;
   }
 
-  .hero__dot {
-    width: 0.5rem;
-    height: 0.5rem;
-    background: var(--color-accent);
-    border-radius: 50%;
-    box-shadow: 0 0 12px var(--color-accent-muted);
-  }
-
-  .hero__title {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
-    margin-bottom: var(--space-lg);
+  .hero__brand-mark {
+    font-size: 1rem;
+    line-height: 1;
   }
 
   .hero__name {
-    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 700;
     letter-spacing: -0.04em;
     line-height: 1.05;
-    background: linear-gradient(135deg, var(--color-text) 0%, var(--color-text-muted) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
   }
 
   .hero__subtitle {
@@ -154,7 +156,7 @@ const { t } = Astro.props;
     line-height: 1.45;
     color: var(--color-text-muted);
     max-width: 36rem;
-    -webkit-text-fill-color: var(--color-text-muted);
+    margin-bottom: var(--space-md);
   }
 
   .hero__supporting {

@@ -1,36 +1,80 @@
 ---
 import Section from './Section.astro';
 import ProjectCard from './ProjectCard.astro';
-import { siteConfig } from '../data/site';
-import type { Translation } from '../data/translations/types';
+import type { Project } from '../data/site';
+import type { Locale, Translation } from '../data/translations/types';
 
 interface Props {
+  projects: Project[];
+  locale: Locale;
   t: Translation['projects'];
 }
 
-const { t } = Astro.props;
-const featuredProjects = siteConfig.projects.filter((p) => p.featured);
+const { projects, locale, t } = Astro.props;
+const featuredProjects = projects.filter((p) => p.featured);
+const otherProjects = projects.filter((p) => !p.featured);
 ---
 
 <Section id="projects" eyebrow={t.eyebrow} title={t.title}>
+  <p class="projects-sync reveal">{t.syncNote}</p>
+
   <div class="projects-grid">
     {featuredProjects.map((project) => (
-      <ProjectCard project={project} t={t} />
+      <ProjectCard project={project} t={t} locale={locale} />
     ))}
   </div>
+
+  {
+    otherProjects.length > 0 && (
+      <div class="projects-more">
+        <h3 class="projects-more__title reveal">{t.moreTitle}</h3>
+        <div class="projects-grid projects-grid--compact">
+          {otherProjects.map((project) => (
+            <ProjectCard project={project} t={t} locale={locale} />
+          ))}
+        </div>
+      </div>
+    )
+  }
 </Section>
 
 <style>
+  .projects-sync {
+    max-width: 42rem;
+    margin-top: calc(var(--space-xl) * -1);
+    margin-bottom: var(--space-xl);
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: var(--color-text-subtle);
+  }
+
   .projects-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-xl);
   }
 
+  .projects-more {
+    margin-top: var(--space-3xl);
+  }
+
+  .projects-more__title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-xl);
+    color: var(--color-text-muted);
+  }
+
   @media (min-width: 768px) {
     .projects-grid {
       grid-template-columns: repeat(2, 1fr);
       gap: var(--space-2xl);
+    }
+
+    .projects-grid--compact {
+      grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+      gap: var(--space-xl);
     }
   }
 </style>

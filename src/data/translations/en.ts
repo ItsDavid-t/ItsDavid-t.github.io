@@ -50,8 +50,12 @@ export const en: Translation = {
   projects: {
     title: 'Projects',
     eyebrow: 'Featured work',
+    syncNote: 'Projects sync from GitHub on each deploy. Publish a repo named echo-* or tag it echo-product to add it here automatically.',
     viewGithub: 'View on GitHub',
     viewDemo: 'Live demo',
+    updated: 'Updated',
+    moreTitle: 'More on GitHub',
+    fallbackDescription: 'A software product published on my GitHub profile.',
     status: {
       active: 'Active product',
       'in-development': 'In development',

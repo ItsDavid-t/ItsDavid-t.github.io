@@ -40,13 +40,14 @@ export interface Translation {
   projects: {
     title: string;
     eyebrow: string;
+    syncNote: string;
     viewGithub: string;
     viewDemo: string;
+    updated: string;
+    moreTitle: string;
+    fallbackDescription: string;
     status: Record<'active' | 'in-development' | 'planned', string>;
-    items: Record<
-      (typeof siteConfig.projects)[number]['id'],
-      { name: string; description: string }
-    >;
+    items: Record<string, { name: string; description: string }>;
   };
   echo: {
     eyebrow: string;

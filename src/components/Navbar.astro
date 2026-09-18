@@ -1,6 +1,7 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
 import LanguageToggle from './LanguageToggle.astro';
+import Avatar from './Avatar.astro';
 import { siteConfig } from '../data/site';
 import type { Locale, Translation } from '../data/translations/types';
 
@@ -23,8 +24,13 @@ const navItems = [
 <header class="navbar" data-navbar>
   <div class="container navbar__inner">
     <a href="#home" class="navbar__brand">
-      <span class="navbar__name">{siteConfig.name}</span>
-      <span class="navbar__role">{t.hero.role}</span>
+      <Avatar size="sm" showBrand class="navbar__avatar" />
+      <span class="navbar__brand-text">
+        <span class="navbar__name">
+          {siteConfig.brand.mark} {siteConfig.name}
+        </span>
+        <span class="navbar__role">{t.hero.role}</span>
+      </span>
     </a>
 
     <nav class="navbar__nav" aria-label="Main navigation">
@@ -104,10 +110,17 @@ const navItems = [
 
   .navbar__brand {
     display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    min-width: 0;
+    transition: opacity var(--transition-fast);
+  }
+
+  .navbar__brand-text {
+    display: flex;
     flex-direction: column;
     gap: 0.125rem;
     min-width: 0;
-    transition: opacity var(--transition-fast);
   }
 
   .navbar__brand:hover {

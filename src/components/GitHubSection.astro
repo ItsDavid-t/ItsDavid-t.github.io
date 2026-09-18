@@ -6,9 +6,14 @@ import type { Translation } from '../data/translations/types';
 
 interface Props {
   t: Translation['github'];
+  stats: {
+    publicRepoCount: number;
+    echoProducts: number;
+    username: string;
+  };
 }
 
-const { t } = Astro.props;
+const { t, stats } = Astro.props;
 ---
 
 <Section id="github" eyebrow={t.eyebrow} title={t.title} class="github-section">
@@ -17,15 +22,15 @@ const { t } = Astro.props;
 
     <div class="github__stats">
       <div class="github-stat">
-        <span class="github-stat__value">@{siteConfig.githubUsername}</span>
+        <span class="github-stat__value">{stats.publicRepoCount}</span>
         <span class="github-stat__label">{t.stats.repositories}</span>
       </div>
       <div class="github-stat">
-        <span class="github-stat__value">Flutter</span>
+        <span class="github-stat__value">{stats.echoProducts}</span>
         <span class="github-stat__label">{t.stats.products}</span>
       </div>
       <div class="github-stat">
-        <span class="github-stat__value">Echo</span>
+        <span class="github-stat__value">@{stats.username}</span>
         <span class="github-stat__label">{t.stats.openSource}</span>
       </div>
     </div>
