@@ -50,7 +50,7 @@ export const siteConfig = {
   projects: [
     {
       id: 'echo-stock',
-      githubRepo: 'echo-stock',
+      githubRepo: 'https://github.com/ItsDavid-t/catalogo_nova_admin',
       status: 'active',
       technologies: [
         'Flutter',
@@ -80,8 +80,8 @@ export const siteConfig = {
       featured: true,
       image: '/projects/echo_fix.png',
     },{
-        id: 'echo-stock-admin',
-      githubRepo: 'echo-stock-admin',
+        id: 'echo-stock-web',
+      githubRepo: 'https://github.com/ItsDavid-t/web-echo-stock',
       status: 'active',
       technologies: [
         'Next.js',
