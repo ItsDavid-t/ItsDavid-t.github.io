@@ -15,6 +15,7 @@ export const en: Translation = {
     projects: 'Projects',
     stack: 'Stack',
     contact: 'Contact',
+    cv: 'CV',
     menuOpen: 'Open menu',
     menuClose: 'Close menu',
   },

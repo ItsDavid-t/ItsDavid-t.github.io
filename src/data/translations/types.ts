@@ -15,6 +15,7 @@ export interface Translation {
     projects: string;
     stack: string;
     contact: string;
+    cv: string;
     menuOpen: string;
     menuClose: string;
   };
