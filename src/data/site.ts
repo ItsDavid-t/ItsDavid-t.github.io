@@ -52,7 +52,7 @@ export const siteConfig = {
  
   projects: [
     {
-      id: 'catalogo_nova_admin',
+      id: 'catalogo-nova-admin',
       githubRepo: 'catalogo_nova_admin',
       status: 'active',
       technologies: [
